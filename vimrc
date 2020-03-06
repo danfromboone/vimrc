@@ -4,6 +4,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-scripts/vis'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 
