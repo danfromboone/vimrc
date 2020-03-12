@@ -8,6 +8,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
