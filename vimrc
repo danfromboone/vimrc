@@ -252,7 +252,7 @@ set wildignore+=*/vendor/*,*/build/*,*.class,*.swp,*.zip
 " fzf config
 set rtp+=/opt/homebrew/opt/fzf
 
-AirlineTheme lucius
+"AirlineTheme lucius
 "AirlineTheme base16
 
 map <C-F> :Ag<enter>
