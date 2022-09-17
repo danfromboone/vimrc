@@ -1,32 +1,56 @@
+" :wa write all buffers
+" :xa save and close all 
+"     
+"
+"
+"
+"
+"
+"
+"
+"
+"
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+  Plug 'https://github.com/vim-airline/vim-airline.git'
+  Plug 'https://github.com/vim-airline/vim-airline-themes.git'
 
-" Plug 'terryma/vim-smooth-scroll'
+  Plug 'https://github.com/junegunn/fzf.vim.git'
+  Plug 'https://github.com/preservim/nerdtree.git'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'kien/ctrlp.vim'
+  Plug 'luochen1990/rainbow'
 
-" see git changes in the gutter
-Plug 'airblade/vim-gitgutter'
+  " Plug 'terryma/vim-smooth-scroll'
+
+  Plug 'sheerun/vim-polyglot'
+  Plug 'kien/ctrlp.vim'
+
+  " see git changes in the gutter
+  Plug 'airblade/vim-gitgutter'
 
 
-Plug 'easymotion/vim-easymotion'
-" \\ is the default leader key
-" press \\w to jump to word
+  Plug 'easymotion/vim-easymotion'
+  " \\ is the default leader key
+  " press \\w to jump to word
+  " press \\b to jump backwards to word
 
 
-Plug 'elzr/vim-json'
+  Plug 'elzr/vim-json'
 
-" these are in ideavim
-Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+  " these are in ideavim
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
 
+  Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+  Plug 'https://github.com/tpope/vim-fugitive.git'
+  Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 call plug#end()
 
+let g:NERDTreeIgnore = ['^bin$','^.git$','^.idea$','^vendor$' ]
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 " set fdm=syntax
 "set fdm=indent
@@ -80,6 +104,9 @@ set laststatus=2
 "  camel-case command
 command! -range CamelCase <line1>,<line2>s/_\(\w\)/\u\1/g
 
+" remove extra whitespace
+command! -range SpaceFix <line1>,<line2>s/\s\+/ /g
+
 " Trim whitespace from EOL
 command! -range TrimEnd <line1>,<line2>s/\s*$//
 
@@ -108,35 +135,6 @@ nmap <space>r :source ~/.vimrc
 nmap <space>u :let @a = 
 nmap <space>u ':let @u = system("uuidgen \| tr -d \'\n\'") \| normal "ap'
 nmap <space>u :let @u = system("uuidgen") \| normal "ap<enter>
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-
-" Plug 'terryma/vim-smooth-scroll'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'kien/ctrlp.vim'
-
-" see git changes in the gutter
-Plug 'airblade/vim-gitgutter'
-
-
-Plug 'easymotion/vim-easymotion'
-" \\ is the default leader key
-" press \\w to jump to word
-
-
-Plug 'elzr/vim-json'
-
-" these are in ideavim
-Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
 
 
 
@@ -246,3 +244,34 @@ nmap <space>} :/}<cr>
 "colorscheme default
 "colorscheme mavcim
 colorscheme evening
+
+
+" ctlr-p config
+set wildignore+=*/vendor/*,*/build/*,*.class,*.swp,*.zip
+
+" fzf config
+set rtp+=/opt/homebrew/opt/fzf
+
+AirlineTheme lucius
+"AirlineTheme base16
+
+map <C-F> :Ag<enter>
+map <space>f :GFiles<enter>
+map <space>F :Files<enter>
+map <space>b :Buffers<enter>
+map <space>t :NERDTreeToggle<enter>
+map <space>T :NERDTreeFind<enter>
+map <space>t :NERDTreeToggle<enter>
+map <space><Right> <C-w><Right>
+map <space><Left> <C-w><Left>
+map <space><Up> <C-w><Up>
+map <space><Down> <C-w><Down>
+map <space>v :source ~/.vimrc<enter>
+
+map <space>V :e ~/.vimrc<enter>
+
+
+"ycm
+"
+map ;f :YcmCompleter FixIt<enter>
+map ;g :YcmCompleter GoTo<enter>
